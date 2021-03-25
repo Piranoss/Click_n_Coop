@@ -1,6 +1,7 @@
 package com.example.clickncoop;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,10 @@ public class SecondFragment extends Fragment {
     private int compteur2 = 0;
     private TextView texte;
     private TextView texte2;
+    private TextView chrono;
+    private TextView chrono2;
     private CountViewModel viewModel;
+    public int counter = 10;
 
     @Override
     public View onCreateView(
@@ -34,6 +38,8 @@ public class SecondFragment extends Fragment {
 
         texte = (TextView) view.findViewById(R.id.Compteur1);
         texte2 = (TextView) view.findViewById(R.id.Compteur2);
+        chrono = (TextView) view.findViewById(R.id.Chrono1);
+        chrono2 = (TextView) view.findViewById(R.id.Chrono2);
 
         viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
 
@@ -43,7 +49,22 @@ public class SecondFragment extends Fragment {
         compteur2= viewModel.getCounter();
         texte2.setText(String.valueOf(compteur2));
 
+
         increment();
+
+        new CountDownTimer(10000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                chrono.setText(String.valueOf(counter));
+                chrono2.setText(String.valueOf(counter));
+                counter --;
+            }
+            @Override
+            public void onFinish() {
+                chrono.setText("Fini");
+                chrono2.setText("Fini");
+            }
+        }.start();
     }
 
     public void increment(){
