@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 public class RythmFragment extends Fragment {
 
-    private RythmViewModel mViewModel;
+    private CountViewModel mViewModel;
 
     public static RythmFragment newInstance() {
         return new RythmFragment();
@@ -29,7 +29,7 @@ public class RythmFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(RythmViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(CountViewModel.class);
         // TODO: Use the ViewModel
     }
 
