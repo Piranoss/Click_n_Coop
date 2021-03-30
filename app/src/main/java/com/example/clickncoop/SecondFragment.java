@@ -11,10 +11,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
 
+    private Button plus1;
+    private Button plus2;
+    private boolean verif1 = false;
+    private boolean mTimerRunning = false;
+    private boolean verif2 = false;
+    private boolean verif = false;
     private int compteur1 = 0;
     private int compteur2 = 0;
     private TextView texte;
@@ -49,43 +54,66 @@ public class SecondFragment extends Fragment {
         compteur2= viewModel.getCounter();
         texte2.setText(String.valueOf(compteur2));
 
-
         increment();
+    }
 
-        new CountDownTimer(10000,1000) {
+    public void increment(){
+        plus1 = (Button) getView().findViewById(R.id.button_second);
+        plus1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mTimerRunning){
+                    compteur1 += 1;
+                    viewModel.setCounter(compteur1);
+                    texte.setText(String.valueOf(compteur1));
+                } else {
+                    verify(1);
+                }
+            }
+        });
+
+        plus2 = (Button) getView().findViewById(R.id.button_second2);
+        plus2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mTimerRunning){
+                    compteur2 += 1;
+                    viewModel.setCounter(compteur2);
+                    texte2.setText(String.valueOf(compteur2));
+                } else {
+                    verify(2);
+                }
+            }
+        });
+    }
+    public void startTimer(){
+        new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 chrono.setText(String.valueOf(counter));
                 chrono2.setText(String.valueOf(counter));
-                counter --;
+                counter--;
             }
+
             @Override
             public void onFinish() {
                 chrono.setText("Fini");
                 chrono2.setText("Fini");
             }
         }.start();
+        mTimerRunning = true;
     }
 
-    public void increment(){
-        Button plus1 = (Button) getView().findViewById(R.id.button_second);
-        plus1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compteur1+=1;
-                viewModel.setCounter(compteur1);
-                texte.setText(String.valueOf(compteur1));
-            }
-        });
+    public void verify(int x){
+        if(x==1) {
+            verif1 = true;
+        }
+        if(x==2){
+            verif2 = true;
+        }
 
-        Button plus2 = (Button) getView().findViewById(R.id.button_second2);
-        plus2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                compteur2+=1;
-                viewModel.setCounter(compteur2);
-                texte2.setText(String.valueOf(compteur2));
-            }
-        });
+        if(verif2 & verif1){
+            startTimer();
+        }
     }
 }
