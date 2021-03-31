@@ -16,16 +16,13 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ScoreFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ScoreFragment extends Fragment {
     CountViewModel viewModel;
     private Button replay;
     private Button menuP;
     private TextView score;
+    private int remiseZero = 0;
 
     @Override
     public View onCreateView(
@@ -59,6 +56,7 @@ public class ScoreFragment extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(ScoreFragment.this)
                         .navigate(R.id.action_scoreFragment_to_SecondFragment);
+                viewModel.setCounter(remiseZero);
             }
         });
 
