@@ -20,17 +20,36 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.clickncoop.SecondFragment"
+        android:name="com.example.clickncoop.MashFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/mash_fragment">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SecondFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/rythmFragment"
         android:name="com.example.clickncoop.RythmFragment"
         android:label="rythm_fragment"
-        tools:layout="@layout/rythm_fragment" />
+        tools:layout="@layout/rythm_fragment" >
+        <action
+            android:id="@+id/action_rythmFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.example.clickncoop.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_scoreFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
 </navigation>
