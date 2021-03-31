@@ -52,4 +52,9 @@
             android:id="@+id/action_scoreFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/rythmFragment"
+        android:name="com.example.clickncoop.RythmFragment"
+        android:label="rythm_fragment"
+        tools:layout="@layout/rythm_fragment" />
 </navigation>
