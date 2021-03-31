@@ -24,10 +24,13 @@ public class MashFragment extends Fragment {
     private CountViewModel viewModel;
     private CountDownTimer timer;
     private TextView chrono1;
+    private TextView chrono2;
     private Button plus1;
     private Button plus2;
-    private boolean isClickedP1;
-    private boolean isClickedP2;
+    private boolean verif1 = false;
+    private boolean mTimerRunning = false;
+    private boolean verif2 = false;
+    private boolean verif = false;
 
     @Override
     public View onCreateView(
@@ -44,6 +47,7 @@ public class MashFragment extends Fragment {
         texte = (TextView) view.findViewById(R.id.Compteur1);
         texte2 = (TextView) view.findViewById(R.id.Compteur2);
         chrono1 = (TextView) view.findViewById(R.id.Chrono1);
+        chrono2 = (TextView) view.findViewById(R.id.Chrono2);
 
         viewModel = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
 
@@ -56,7 +60,6 @@ public class MashFragment extends Fragment {
         plus1 = (Button) getView().findViewById(R.id.button_second);
         plus2 = (Button) getView().findViewById(R.id.button_second2);
 
-        countDownTimer();
         increment();
     }
 
@@ -64,18 +67,26 @@ public class MashFragment extends Fragment {
         plus1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                compteur1+=1;
-                viewModel.setCounter(compteur1);
-                texte.setText(String.valueOf(compteur1));
+                if(mTimerRunning) {
+                    compteur1 += 1;
+                    viewModel.setCounter(compteur1);
+                    texte.setText(String.valueOf(compteur1));
+                }else{
+                    verify(1);
+                }
             }
         });
 
         plus2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                compteur2+=1;
-                viewModel.setCounter(compteur2);
-                texte2.setText(String.valueOf(compteur2));
+                if(mTimerRunning) {
+                    compteur2 += 1;
+                    viewModel.setCounter(compteur2);
+                    texte2.setText(String.valueOf(compteur2));
+                }else{
+                    verify(2);
+                }
             }
         });
     }
@@ -85,16 +96,19 @@ public class MashFragment extends Fragment {
                 @Override
                 public void onTick(long millisUntilFinished) {
                     chrono1.setText("00:"+ String.format(Locale.getDefault(), "%d:", millisUntilFinished / 1000L));
+                    chrono2.setText("00:"+ String.format(Locale.getDefault(), "%d:", millisUntilFinished / 1000L));
                 }
 
                 @Override
                 public void onFinish() {
                     chrono1.setText("00:00:00");
+                    chrono2.setText("00:00:00");
                     score();
                     NavHostFragment.findNavController(MashFragment.this)
                             .navigate(R.id.action_SecondFragment_to_scoreFragment);
                 }
             }.start();
+            mTimerRunning = true;
     }
 
     public CountDownTimer getTimer() {
@@ -105,5 +119,18 @@ public class MashFragment extends Fragment {
         int point;
         point = compteur1+compteur2;
         viewModel.setCounter(point);
+    }
+
+    public void verify(int x){
+        if(x==1) {
+            verif1 = true;
+        }
+        if(x==2){
+            verif2 = true;
+        }
+
+        if(verif2 & verif1){
+            countDownTimer();
+        }
     }
 }
