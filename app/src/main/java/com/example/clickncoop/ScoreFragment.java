@@ -50,6 +50,7 @@ public class ScoreFragment extends Fragment {
     public void affichePoint(){
         int scoreFinal = viewModel.getCounter();
         score.setText(String.valueOf(scoreFinal));
+
     }
 
     public void replayAndMenuP(){
