@@ -51,5 +51,8 @@
         <action
             android:id="@+id/action_scoreFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_scoreFragment_to_rythmFragment"
+            app:destination="@id/rythmFragment" />
     </fragment>
 </navigation>
