@@ -2,8 +2,8 @@ package com.example.clickncoop;
 
 import androidx.lifecycle.ViewModelProvider;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.graphics.Color;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Locale;
+
+import static android.graphics.Color.rgb;
 
 public class RythmFragment extends Fragment {
 
@@ -52,6 +54,8 @@ public class RythmFragment extends Fragment {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         texte = (TextView) view.findViewById(R.id.Compteur);
         texte2 = (TextView) view.findViewById(R.id.Compteur2nd);
@@ -92,7 +96,7 @@ public class RythmFragment extends Fragment {
                 }else{
                     verify(true);
                     compteur += 1;
-                    viewModel. setCounterRythm(compteur);
+                    viewModel.setCounterRythm(compteur);
                     texte.setText(String.valueOf(compteur));
                     texte2.setText(String.valueOf(compteur));
                     changeButton(1);
@@ -105,7 +109,7 @@ public class RythmFragment extends Fragment {
             public void onClick(View view) {
                 if(mTimerRunning) {
                     compteur += 1;
-                    viewModel. setCounterRythm(compteur);
+                    viewModel.setCounterRythm(compteur);
                     texte.setText(String.valueOf(compteur));
                     texte2.setText(String.valueOf(compteur));
                     changeButton(2);
@@ -117,7 +121,7 @@ public class RythmFragment extends Fragment {
             public void onClick(View view) {
                 if(mTimerRunning) {
                     compteur += 1;
-                    viewModel. setCounterRythm(compteur);
+                    viewModel.setCounterRythm(compteur);
                     texte.setText(String.valueOf(compteur));
                     texte2.setText(String.valueOf(compteur));
                     changeButton(3);
@@ -130,7 +134,7 @@ public class RythmFragment extends Fragment {
             public void onClick(View view) {
                 if(mTimerRunning) {
                     compteur += 1;
-                    viewModel. setCounterRythm(compteur);
+                    viewModel.setCounterRythm(compteur);
                     texte.setText(String.valueOf(compteur));
                     texte2.setText(String.valueOf(compteur));
                     changeButton(4);
@@ -152,9 +156,9 @@ public class RythmFragment extends Fragment {
                 chrono1.setText("00:00:00");
                 chrono2.setText("00:00:00");
                 score();
-                viewModel.setVerification(2)
                 NavHostFragment.findNavController(RythmFragment.this)
                         .navigate(R.id.action_rythmFragment_to_scoreFragment);
+                viewModel.setVerification(2);
             }
         }.start();
         mTimerRunning = true;
@@ -163,7 +167,7 @@ public class RythmFragment extends Fragment {
     public void score(){
         int point;
         point = compteur;
-        viewModel. setCounterRythm(point);
+        viewModel.setCounterRythm(point);
     }
 
     public void verify(boolean x){

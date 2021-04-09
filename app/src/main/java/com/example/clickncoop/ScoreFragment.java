@@ -40,24 +40,47 @@ public class ScoreFragment extends Fragment {
         replay = (Button) view.findViewById(R.id.replay);
         menuP = (Button) view.findViewById(R.id.returnM);
         score = (TextView) view.findViewById(R.id.point);
-        affichePoint();
         replayAndMenuP();
+        verificationTypeJeu();
+        //backStack();
     }
 
-    public void affichePoint(){
-        int scoreFinal = viewModel.getCounter();
+    public void affichePointMash(){
+        int scoreFinal = viewModel.getCounterMash();
         score.setText(String.valueOf(scoreFinal));
-        viewModel.setCounter(remiseZero);
 
+    }
+
+    public void affichePointRythm(){
+        int scoreFinal = viewModel.getCounterRythm();
+        score.setText(String.valueOf(scoreFinal));
+
+    }
+
+    public void verificationTypeJeu(){
+        if (viewModel.getVerification() == 1){
+            affichePointMash();
+        }
+        if (viewModel.getVerification() == 2){
+            affichePointRythm();
+        }
     }
 
     public void replayAndMenuP(){
+        
         replay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(ScoreFragment.this)
-                        .navigate(R.id.action_scoreFragment_to_SecondFragment);
-
+                if(viewModel.getVerification() == 1) {
+                    NavHostFragment.findNavController(ScoreFragment.this)
+                            .navigate(R.id.action_scoreFragment_to_SecondFragment);
+                    viewModel.setCounterMash(remiseZero);
+                }
+                if(viewModel.getVerification() == 2) {
+                    NavHostFragment.findNavController(ScoreFragment.this)
+                            .navigate(R.id.action_scoreFragment_to_rythmFragment);
+                    viewModel.setCounterRythm(remiseZero);
+                }
             }
         });
 
@@ -66,7 +89,18 @@ public class ScoreFragment extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(ScoreFragment.this)
                         .navigate(R.id.action_scoreFragment_to_FirstFragment);
+                viewModel.setCounterMash(remiseZero);
+                viewModel.setCounterRythm(remiseZero);
             }
         });
+    }
+
+    public void backStack(){
+        if (viewModel.getVerification() == 1) {
+            ((MainActivity) getActivity()).replaceFragment(new MashFragment(), "MashFragment");
+        }
+        if (viewModel.getVerification() == 2) {
+            ((MainActivity) getActivity()).replaceFragment(new RythmFragment(), "RythmFragment");
+        }
     }
 }
