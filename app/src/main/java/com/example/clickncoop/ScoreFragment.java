@@ -47,6 +47,7 @@ public class ScoreFragment extends Fragment {
     public void affichePoint(){
         int scoreFinal = viewModel.getCounter();
         score.setText(String.valueOf(scoreFinal));
+        viewModel.setCounter(remiseZero);
 
     }
 
@@ -56,7 +57,7 @@ public class ScoreFragment extends Fragment {
             public void onClick(View v) {
                 NavHostFragment.findNavController(ScoreFragment.this)
                         .navigate(R.id.action_scoreFragment_to_SecondFragment);
-                viewModel.setCounter(remiseZero);
+
             }
         });
 
