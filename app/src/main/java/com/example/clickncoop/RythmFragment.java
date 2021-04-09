@@ -2,6 +2,7 @@ package com.example.clickncoop;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -69,8 +70,11 @@ public class RythmFragment extends Fragment {
         plus4 = (Button) getView().findViewById(R.id.button4);
 
         plus2.setEnabled(false);
+        plus2.setBackgroundColor(getResources().getColor(R.color.rouge2));
         plus3.setEnabled(false);
+        plus3.setBackgroundColor(getResources().getColor(R.color.rouge2));
         plus4.setEnabled(false);
+        plus4.setBackgroundColor(getResources().getColor(R.color.rouge2));
 
         increment();
     }
@@ -174,19 +178,27 @@ public class RythmFragment extends Fragment {
         switch (x){
             case 1:
                 plus1.setEnabled(false);
+                plus1.setBackgroundColor(getResources().getColor(R.color.rouge2));
                 plus2.setEnabled(true);
+                plus2.setBackgroundColor(getResources().getColor(R.color.rouge));
                 break;
             case 2:
                 plus2.setEnabled(false);
+                plus2.setBackgroundColor(getResources().getColor(R.color.rouge2));
                 plus3.setEnabled(true);
+                plus3.setBackgroundColor(getResources().getColor(R.color.rouge));
                 break;
             case 3:
                 plus3.setEnabled(false);
+                plus3.setBackgroundColor(getResources().getColor(R.color.rouge2));
                 plus4.setEnabled(true);
+                plus4.setBackgroundColor(getResources().getColor(R.color.rouge));
                 break;
             case 4:
                 plus4.setEnabled(false);
+                plus4.setBackgroundColor(getResources().getColor(R.color.rouge2));
                 plus1.setEnabled(true);
+                plus1.setBackgroundColor(getResources().getColor(R.color.rouge));
                 break;
         }
     }
