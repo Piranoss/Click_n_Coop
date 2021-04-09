@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,81 +8,107 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MashFragment">
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/Chrono2"
+            android:id="@+id/Chrono2nd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:rotation="180"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/Chrono1"
+            app:layout_constraintBottom_toTopOf="@+id/Chrono"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_second2"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
             app:layout_constraintVertical_bias="0.95"
             tools:text="@string/chronometre" />
 
+        <TextView
+            android:id="@+id/Compteur2nd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="180"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/Chrono2nd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            app:layout_constraintVertical_bias="0.19999999" />
+
         <Button
-            android:id="@+id/button_second"
+            android:id="@+id/button1"
             android:layout_width="130dp"
             android:layout_height="65dp"
             android:text="@string/compte"
             app:backgroundTint="#FF5722"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button3"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.98" />
+            app:layout_constraintVertical_bias="0.975" />
 
         <Button
-            android:id="@+id/button_second2"
+            android:id="@+id/button3"
+            android:layout_width="130dp"
+            android:layout_height="65dp"
+            android:text="@string/compte"
+            app:backgroundTint="#FF5722"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.975" />
+
+        <TextView
+            android:id="@+id/Compteur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Chrono"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/Chrono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button4"
+            app:layout_constraintVertical_bias="0.55"
+            tools:text="@string/chronometre" />
+
+        <Button
+            android:id="@+id/button4"
             android:layout_width="130dp"
             android:layout_height="65dp"
             android:rotation="180"
             android:text="@string/compte"
             app:backgroundTint="#FF5722"
-            app:layout_constraintBottom_toTopOf="@+id/button_second"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.02" />
 
-        <TextView
-            android:id="@+id/Chrono1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/button_second"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_second2"
-            app:layout_constraintVertical_bias="0.55"
-            tools:text="@string/chronometre" />
-
-        <TextView
-            android:id="@+id/Compteur2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="130dp"
+            android:layout_height="65dp"
             android:rotation="180"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/Chrono2"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/compte"
+            app:backgroundTint="#FF5722"
+            app:layout_constraintBottom_toTopOf="@+id/button1"
+            app:layout_constraintEnd_toStartOf="@+id/button4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_second2"
-            app:layout_constraintVertical_bias="0.2" />
-
-        <TextView
-            android:id="@+id/Compteur1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/button_second"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Chrono1"
-            app:layout_constraintVertical_bias="0.8" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
